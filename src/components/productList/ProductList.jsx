@@ -56,9 +56,9 @@ const products = [
 
 const getTotalPrice = (items = []) => {
   return items.reduce((acc, item) => {
-    return acc += item.price
-  }, 0)
-}
+    return (acc += item.price);
+  }, 0);
+};
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = useState([]);
@@ -81,15 +81,20 @@ const ProductList = () => {
     } else {
       tg.MainButton.show();
       tg.setParams({
-        text: `Купить ${getTotalPrice(newItems)}`
-      })
+        text: `Купить ${getTotalPrice(newItems)}`,
+      });
     }
   };
 
   return (
     <div className={"list"}>
       {products.map((item) => (
-        <ProductItem product={item} onAdd={onAdd} className={"item"} />
+        <ProductItem
+          key={item.id}
+          product={item}
+          onAdd={onAdd}
+          className={"item"}
+        />
       ))}
     </div>
   );
